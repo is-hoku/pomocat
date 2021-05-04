@@ -1,0 +1,114 @@
+#!/bin/bash
+
+work=60
+short=10
+long=30
+count=5
+interval=3
+cnt=1
+sw=0
+
+
+function usage {
+	cat <<EOF
+ ######    #####   ##   ##   #####     ####     ##     ######
+  ##  ##  ##   ##  ### ###  ##   ##   ##  ##   ####    # ## #
+  ##  ##  ##   ##  #######  ##   ##  ##       ##  ##     ##
+  #####   ##   ##  #######  ##   ##  ##       ##  ##     ##
+  ##      ##   ##  ## # ##  ##   ##  ##       ######     ##
+  ##      ##   ##  ##   ##  ##   ##   ##  ##  ##  ##     ##
+ ####      #####   ##   ##   #####     ####   ##  ##    ####
+
+
+pomocat [-h] [w | s | l | c | i]
+ex.) pomocat 60 10 30 5 3 
+
+pomocat is a pomodoro timer for cat lovers.
+
+Options:
+
+-h Print this usage message.
+
+Arguments:
+
+w Duration of pomodoro timer in minute. (default is 60)
+
+s Duration of short break in minute. (default is 10)
+
+l Duration of long break in minute. (default is 30)
+
+c How many times to repeat Pomodoro (default is 5)
+
+i How many times you need to take a long break every work time. (default is 3)
+
+Have a good day at work!
+EOF
+}
+
+
+function timer {
+	secs=$(($1 * 60))
+	while [ $secs -gt 0 ];
+	do
+#		echo $(($secs / 60))
+#               echo $(($secs % 60))
+		if [ $2 -eq 0 ] && [ $(($secs % 2)) -eq 0 ]; then
+			sw=0
+		elif [ $2 -eq 1 ]; then
+		        sw=2
+		else
+			sw=1
+		fi
+		catanime $sw $(($secs / 60)) $(($secs % 60))
+		sleep 1
+		secs=$((--secs))
+		clear
+	done
+}
+
+
+while getopts :h OPT;
+do
+    case $OPT in
+    h|?)
+        usage
+	exit 0 ;;
+    esac
+done
+
+shift $((OPTIND - 1))
+
+for i in `seq $#`
+do
+	if [ $i -eq 1 ]; then
+		work=$1
+	elif [ $i -eq 2 ]; then
+	        short=$2
+	elif [ $i -eq 3 ]; then
+	        long=$3
+	elif [ $i -eq 4 ]; then
+	        count=$4
+	else
+		interval=$5
+	fi
+done
+
+clear
+
+while [ $count -gt 0 ];
+do
+	timer $work 0
+	notify-send 'Work time is over!' -u normal --icon=cat
+	mpg123 -q cat.mp3
+	if [ $cnt != 1 ] && [ $((interval % cnt)) -eq 0 ]; then
+		timer $long 1
+		notify-send 'Break time is over!' -u normal --icon=cat
+		mpg123 -q cat.mp3
+	else
+		timer $short 1
+		notify-send 'Break time is over!' -u normal --icon=cat
+		mpg123 -q cat.mp3
+	fi
+	cnt=$((++cnt))
+	count=$((--count))
+done
