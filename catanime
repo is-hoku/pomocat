@@ -1,0 +1,113 @@
+#!/bin/bash
+
+if [ $1 -eq 0 ]; then
+cat <<EOF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ?Mx                               .MN.
+     (HMN,.  ........gMMMMMMMMMNg+(&MMMMMMN,   .｡oO( $2 : $3 ) 
+        ?"MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+            .dMMMMMMMMMMMMMMMMMMMMMMMM#"
+          ..MMMMMMMMMMMMMMMMMMMMMMMMMMb
+      .MMMMMMMMMMMMMM"77TWMMMMMMMMMMMMMN,
+     .M#WMM"MMMMMH"^              7WMMMMMNJ. ..
+    JM^.Mt                           (YMNJTHY"
+    7  "^                               ?T""!
+EOF
+
+elif [ $1 -eq 1 ]; then
+cat <<EOF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       .J.    
+       ."MN.                                
+          MN                                  
+          MM.            
+          (M[        ......
+          .MMm...(MMMMMMMMMMNa,     .MN,
+           ,MMMMMMMMMMMMMMMMMMMMNJdMMMMMMb     .｡oO( $2 : $3 )
+            (MMMMMMMMMMMMMMMMMMMMMMMMMMMMMF   
+            dMMMMMMMMMMMMMMMMMMMMMMMMB"  
+            (MMMMMMMMMMMMMMMMMMMMMMF
+             (HMMMMMMMMMMMMMMMMMMMF          
+               -MM#"T"Ma?""MMMMMMD
+               ,MMMHHHMY' MMMM@=         
+                          M#-M       
+                          dM=                
+                         ,"^
+EOF
+
+else
+cat <<EOF
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                  Ja..+..   
+                                  .MMMMMM!    .｡oO( $2 : $3 ) 
+                                  MMMMMF
+                                .MMMMMF
+                             .(MMMMMMMF    
+                          .JMMMMMMMMMMb       
+                        .JMMMMMMMMMMMM@
+                       .MMMMMMMMMMMMMMF
+                       dMMMMMMMMMMMMMD   
+                      JMMMMMMMMMMMMM'
+                   .+MMMMMMMMMMMMMM#          
+                  .MMMMMMMMMMMF M#MN
+                .MM@ WMMMMMMMN  dMgM|   
+        .MMNNMMMY=    7"""""WMt   !?YB
+EOF
+fi
+
