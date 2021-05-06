@@ -60,7 +60,8 @@ function timer {
 			sw=1
 		fi
 		catanime $sw $(($secs / 60)) $(($secs % 60))
-		sleep 1
+#sleep 1
+                sleep 0.997
 		secs=$((--secs))
 		clear
 	done
